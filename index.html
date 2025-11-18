@@ -14,13 +14,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Ruda:wght@400;700&family=Shadow+Script&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <main id="container-main">
+    
+    <div id="splash-screen">
+        <img src="./assets/imgs/logocircular.png" alt="Logomarca Kamila Lima" id="splash-logo" /> 
+    </div>
+    
+    <main class="main-content">
       <header id="site-header">
-        <img src="./assets/imgs/logocircular.png" alt="Kamila Lima Salão Feminino Logo" id="logo-principal" />
+        <img src="./assets/imgs/logocircular.png" alt="Logomarca Kamila Lima" />
       </header>
-
-      <section id="menu-cards" aria-label="Menu de Navegação Principal">
-        
+      
+      <section id="menu-cards">
         <a href="./assets/html/agendamento.html" class="nav-card">
           <img src="./assets/imgs/agenda.png" alt="Ícone Agenda" />
           <span class="card-label">Agendamento</span>
@@ -50,13 +54,40 @@
           <img src="./assets/imgs/depoimentos.png" alt="Ícone Depoimentos" />
           <span class="card-label">Depoimentos</span>
         </a>
-        
       </section>
-
+      
       <footer>
         <small>&copy; 2025 -<a href="https://portfolioraposoofc.vercel.app" style="text-decoration: none; color: #C8B273">Rapôso Web Dev</a> | Todos os direitos reservados.</small>
       </footer>
     </main>
-    
-    </body>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const splashScreen = document.getElementById('splash-screen');
+            const mainContent = document.querySelector('.main-content');
+            
+            // Duração total da splash screen (2.5 segundos de animação + 0.5s para fade-out)
+            const splashDuration = 2500; 
+
+            // 1. Inicia o temporizador
+            setTimeout(() => {
+                // Adiciona a classe para iniciar o efeito de fade-out da tela
+                splashScreen.classList.add('fade-out');
+
+                // 2. Espera a transição de fade-out terminar (0.5s definido no CSS)
+                splashScreen.addEventListener('transitionend', () => {
+                    splashScreen.style.display = 'none'; // Remove a tela após o fade-out
+                    mainContent.classList.add('loaded'); // Adiciona a classe para surgir o conteúdo
+                }, { once: true }); // Executa o listener apenas uma vez
+                
+                // 3. Garante que o conteúdo principal apareça (fallback)
+                setTimeout(() => {
+                    mainContent.classList.add('loaded');
+                }, 550);
+                
+            }, splashDuration);
+
+        });
+    </script>
+  </body>
 </html>

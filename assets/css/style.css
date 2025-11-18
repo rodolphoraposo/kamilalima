@@ -13,17 +13,79 @@
 
 /* === ESTILOS GLOBAIS === */
 
-/* === ANIMAÇÃO DE ENTRADA SUAVE (Para Cards e Elementos Principais) === */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* === ANIMAÇÕES E ESTILOS DA SPLASH SCREEN (CARREGAMENTO) === */
+
+/* 1. Tela que cobre o viewport */
+#splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #FFFFFF; /* Fundo branco */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease-out; /* Duração do fade-out */
 }
+
+#splash-screen.fade-out {
+    opacity: 0;
+}
+
+/* 2. Estilização da Logo */
+#splash-logo {
+    width: 300px; /* Tamanho da imagem da logo */
+    height: 300px;
+    object-fit: contain;
+    position: relative; 
+    opacity: 0; 
+    position: relative;
+    z-index: 10;
+    /* Logo surge com um pequeno atraso */
+    animation: logoFadeIn 0.5s ease-out 0.2s forwards;
+    display: block;
+}
+
+@keyframes logoFadeIn {
+    to { opacity: 1; }
+}
+
+/* 3. Círculo Dourado (O 'Carregamento' com rotação) */
+#splash-logo::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 190px;
+    height: 190px;
+    border: 4px solid transparent;
+    border-top-color: #c99e28; /* Cor primária (Dourado) */
+    border-radius: 50%;
+    box-sizing: border-box;
+    /* Rotação e animação de carregamento */
+    animation: spin 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite 0.7s; /* Roda infinitamente após 0.7s de atraso */
+    z-index: 1;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* 4. Esconder o conteúdo principal no início */
+.main-content {
+    opacity: 0; /* O conteúdo principal começa invisível */
+    transition: opacity 0.5s ease-in 0.5s; /* Transição de 0.5s com 0.5s de atraso */
+    /* Você pode precisar mudar a regra existente #container-main para .main-content */
+}
+
+.main-content.loaded {
+    opacity: 1;
+}
+
+/* Fim da Splash Screen */
 
 body {
     background-color: #F7ECE0;
@@ -38,7 +100,7 @@ body {
     padding-top: 30px;
 }
 
-#container-main {
+.main-content {
     width: 90%;
     max-width: 500px;
     padding: 25px;
@@ -125,9 +187,6 @@ body {
     text-align: center;
     text-decoration: none;
     color: #000000;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.6s;
-    opacity: 0;
-    animation: fadeIn 0.6s ease-out forwards;
 }
 
 #menu-cards .nav-card:hover {
@@ -952,14 +1011,3 @@ footer small a {
 footer small a:hover {
     text-decoration: underline;
 }
-
-/* === DELAY DA ANIMAÇÃO EM CASCATA === */
-/* Faz com que cada card apareça em sequência, um após o outro */
-#menu-cards .nav-card:nth-child(1) { animation-delay: 0.1s; }
-#menu-cards .nav-card:nth-child(2) { animation-delay: 0.2s; }
-#menu-cards .nav-card:nth-child(3) { animation-delay: 0.3s; }
-#menu-cards .nav-card:nth-child(4) { animation-delay: 0.4s; }
-#menu-cards .nav-card:nth-child(5) { animation-delay: 0.5s; }
-#menu-cards .nav-card:nth-child(6) { animation-delay: 0.6s; }
-#menu-cards .nav-card:nth-child(7) { animation-delay: 0.7s; }
-#menu-cards .nav-card:nth-child(8) { animation-delay: 0.8s; }
