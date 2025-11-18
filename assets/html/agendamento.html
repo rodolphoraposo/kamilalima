@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Rapôso Web Dev - https://portfolioraposoofc.vercel.app/" />
+    <meta name="description" content="Agendamento online fácil e rápido para o Salão Feminino Kamila Lima." />
+    <title>Agendamento | Kamila Lima</title>
+    <link rel="stylesheet" href="../css/style.css" /> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="icon" href="../icon/logocircular.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Ruda:wght@400;700&family=Shadow+Script&display=swap" rel="stylesheet" />
+  </head>
+  </head>
+  <body>
+    <header id="site-header">
+      <a href="../../index.html" class="back-link" aria-label="Voltar para o Agendamento">
+        <i class="fa-solid fa-arrow-left"></i>
+      </a>
+      <img src="../imgs/logocircular.png" alt="Kamila Lima Salão Feminino Logo" id="logo-principal" />
+    </header>
+
+    <main id="booking-main">
+      <form id="booking-form">
+
+        <fieldset id="step-1" class="booking-step active">
+          <legend>
+            <i class="fa-solid fa-wand-sparkles"></i> 1. Selecione o Serviço
+          </legend>
+          <select id="service-select" aria-label="Selecione um Serviço">
+            <option value="" selected disabled>-- Escolha um serviço --</option>
+            <option value="corte">Corte de Cabelo (45 min)</option>
+            <option value="escova">Escova Simples (30 min)</option>
+            <option value="manicure">Manicure + Pedicure (60 min)</option>
+            <option value="coloracao">Coloração (90 min)</option>
+          </select>
+          <button type="button" onclick="nextStep(2)" disabled id="next-step-1">
+            Próximo
+          </button>
+        </fieldset>
+
+        <fieldset id="step-2" class="booking-step">
+          <legend>
+            <i class="fa-solid fa-calendar-alt"></i> 2. Escolha a Data e Hora
+          </legend>
+          <label for="date-input">Data:</label>
+          <input type="date" id="date-input" required />
+          
+          <div id="time-slots">
+            <p>Selecione uma data para ver os horários disponíveis.</p>
+          </div>
+          
+          <div class="step-navigation">
+            <button type="button" onclick="prevStep(1)">Anterior</button>
+            <button type="button" onclick="nextStep(3)" disabled id="next-step-2">
+              Próximo
+            </button>
+          </div>
+        </fieldset>
+
+        <fieldset id="step-3" class="booking-step">
+          <legend>
+            <i class="fa-solid fa-user-check"></i> 3. Confirme e Agende
+          </legend>
+          
+          <section id="summary" class="summary-details">
+            <h2>Resumo do Agendamento</h2>
+            <p>Serviço: <strong id="summary-service"></strong></p>
+            <p>Data: <strong id="summary-date"></strong></p>
+            <p>Horário: <strong id="summary-time"></strong></p>
+          </section>
+          
+          <label for="client-name">Seu Nome:</label>
+          <input type="text" id="client-name" required />
+          
+          <label for="client-whatsapp">WhatsApp (Opcional):</label>
+          <input type="tel" id="client-whatsapp" placeholder="(XX) XXXXX-XXXX" />
+          
+          <div class="step-navigation">
+            <button type="button" onclick="prevStep(2)">Anterior</button>
+            <button type="submit" disabled id="submit-booking">
+              Confirmar Agendamento
+            </button>
+          </div>
+        </fieldset>
+
+        <section id="confirmation-message" class="booking-step success-view">
+          <h2><i class="fa-solid fa-check-circle"></i> Agendamento Confirmado!</h2>
+          <p>Seu horário está reservado com sucesso. Obrigado por agendar com Kamila Lima!</p>
+          <p>Você será redirecionado para o WhatsApp com os detalhes para finalizar.</p>
+          <a href="#" onclick="resetBooking()" class="new-booking-btn">Novo Agendamento</a>
+        </section>
+        
+      </form>
+    </main>
+    
+    <footer>
+      <small>&copy; 2025 -<a href="https://portfolioraposoofc.vercel.app" style="text-decoration: none; color: #C8A96A">Rapôso Web Dev</a> | Todos os direitos reservados.</small>
+    </footer>
+    <script src="../js/booking-system.js"></script>
+  </body>
+</html>

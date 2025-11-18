@@ -1,0 +1,965 @@
+/*
+ * ARQUIVO ÚNICO: ./assets/css/style.css
+ * ESTILOS GLOBAIS, INDEX, AGENDAMENTO, SERVIÇOS, CONTATO, DEPOIMENTOS, DICAS E PRODUTOS.
+ */
+
+/* === VARIÁVEIS DE COR UTILIZADAS (Para referência) === */
+/* Cor Primária/Destaque: #C8B273 */
+/* Cor Secundária/Texto: #80565D */
+/* Fundo Principal: #F7ECE0 */
+/* Cinza Claro: #D9D9D9 */
+/* Branco: #FFFFFF */
+/* Preto: #000000 */
+
+/* === ESTILOS GLOBAIS === */
+
+/* === ANIMAÇÃO DE ENTRADA SUAVE (Para Cards e Elementos Principais) === */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+body {
+    background-color: #F7ECE0;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
+    padding-top: 30px;
+}
+
+#container-main {
+    width: 90%;
+    max-width: 500px;
+    padding: 25px;
+    background: #FFFFFF;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin-bottom: 50px;
+}
+
+/* === CABEÇALHO (GLOBAL) === */
+#site-header {
+    text-align: center; 
+    padding: 20px 0 10px;
+    width: 100%;
+    position: relative;
+}
+
+#site-header img {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    border: none;
+    margin-bottom: 5px;
+}
+
+#site-header .title-script {
+    font-family: 'Shadow Script', cursive;
+    color: #80565D;
+    margin: 0;
+    font-size: 3.5em;
+    line-height: 1;
+}
+
+#site-header .subtitle {
+    font-family: 'Ruda', sans-serif;
+    color: #777;
+    margin: 5px 0 20px;
+    font-style: italic;
+}
+
+/* --- Botão Voltar (Para páginas internas) --- */
+#site-header {
+    position: relative;
+}
+
+#site-header .back-link {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    color: #80565D;
+    font-size: 1.8em;
+    text-decoration: none;
+    background: #FFFFFF;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s;
+}
+
+#site-header .back-link:hover {
+    color: #C8B273;
+    background: #F7ECE0;
+}
+
+
+/* === ESTILOS DA INDEX (Menu Cards de Navegação) === */
+#menu-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+    margin-bottom: 20px;
+}
+
+#menu-cards .nav-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    color: #000000;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.6s;
+    opacity: 0;
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+#menu-cards .nav-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+#menu-cards .nav-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #C8B273;
+    margin-bottom: 8px;
+    transition: border-color 0.3s;
+}
+
+#menu-cards .nav-card .card-label {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 0.9em;
+    color: #80565D;
+}
+
+
+/* === ESTILOS DA PÁGINA DE AGENDAMENTO (agendamento.html) === */
+#booking-main {
+    width: 90%;
+    max-width: 450px;
+    background: #FFFFFF;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 50px;
+}
+
+#booking-main #booking-form .booking-step {
+    display: none;
+}
+
+#booking-main #booking-form .booking-step.active {
+    display: block;
+}
+
+#booking-main #booking-form .booking-step fieldset {
+    border: 1px solid #D9D9D9;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+#booking-main #booking-form .booking-step legend {
+    font-weight: bold;
+    color: #C8B273;
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    padding: 0 10px;
+}
+
+#booking-main #booking-form .booking-step legend .fa-solid {
+    margin-right: 8px;
+}
+
+#booking-main #booking-form .booking-step label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #80565D;
+    font-size: 0.95em;
+}
+
+#booking-main #booking-form .booking-step input,
+#booking-main #booking-form .booking-step select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+#booking-main #booking-form .booking-step input:focus,
+#booking-main #booking-form .booking-step select:focus {
+    border-color: #C8B273;
+    outline: none;
+}
+
+#booking-main #booking-form .booking-step .step-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+
+#booking-main #booking-form .booking-step button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s, opacity 0.3s;
+    flex-grow: 1;
+    margin: 0 5px;
+}
+
+#booking-main #booking-form .booking-step button:last-child {
+    margin-right: 0;
+}
+
+/* Estilo para botões 'Próximo' */
+#booking-main #booking-form .booking-step button:not(:first-child) {
+    background-color: #C8B273;
+    color: #FFFFFF;
+}
+
+#booking-main #booking-form .booking-step button:not(:first-child):hover:not(:disabled) {
+    background-color: #B09F67; /* Cor escura de #C8B273 */
+}
+
+/* Estilo para botão 'Anterior' */
+#booking-main #booking-form .booking-step button:first-child:not(#submit-booking) {
+    background-color: #D9D9D9;
+    color: #000000;
+    flex-grow: 0;
+}
+
+/* Estilo para botão 'Confirmar' */
+#booking-main #booking-form .booking-step button#submit-booking {
+    background-color: #28A745;
+}
+
+#booking-main #booking-form .booking-step button#submit-booking:hover:not(:disabled) {
+    background-color: #23943D; /* Cor escura de #28A745 */
+}
+
+#booking-main #booking-form .booking-step button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#booking-main #booking-form .summary-details {
+    background-color: #F8F3EC; /* Cor clara de #F7ECE0 */
+    border-left: 5px solid #C8B273;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+#booking-main #booking-form .summary-details h2 {
+    margin-top: 0;
+    color: #80565D;
+    font-size: 1.1em;
+}
+
+#booking-main #booking-form .summary-details p {
+    margin: 5px 0;
+}
+
+#booking-main #booking-form .summary-details strong {
+    color: #C8B273;
+    font-weight: bold;
+}
+
+#booking-main #booking-form #time-slots {
+    margin-top: 20px;
+}
+
+#booking-main #booking-form #time-slots h3 {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+#booking-main #booking-form #time-slots .time-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    gap: 10px;
+}
+
+#booking-main #booking-form #time-slots .time-slot-btn {
+    background-color: #eee;
+    color: #80565D;
+    border: 1px solid #ccc;
+    padding: 10px 5px;
+}
+
+#booking-main #booking-form #time-slots .time-slot-btn.selected {
+    background-color: #C8B273;
+    color: #FFFFFF;
+    border-color: #B09F67;
+    font-weight: bold;
+}
+
+#booking-main #booking-form #time-slots .time-slot-btn:hover:not(.selected) {
+    background-color: #ddd;
+}
+
+#booking-main #booking-form #time-slots .no-slots-message {
+    color: #DC3545;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+}
+
+#booking-main #booking-form .success-view {
+    text-align: center;
+}
+
+#booking-main #booking-form .success-view h2 {
+    color: #28A745;
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+#booking-main #booking-form .success-view p {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+#booking-main #booking-form .success-view .new-booking-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #C8B273;
+    color: #FFFFFF;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+#booking-main #booking-form .success-view .new-booking-btn:hover {
+    background-color: #B09F67;
+}
+
+
+/* === ESTILOS DA PÁGINA DE SERVIÇOS (servicos.html) === */
+#services-main {
+    width: 90%;
+    max-width: 600px;
+    margin-top: 20px;
+}
+
+#services-main .service-category {
+    margin-bottom: 30px;
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+#services-main .service-category h2 {
+    color: #80565D;
+    border-bottom: 2px solid #C8B273;
+    padding-bottom: 10px;
+    margin-top: 0;
+    font-size: 1.5em;
+}
+
+#services-main .service-category h2 .fa-solid {
+    margin-right: 10px;
+    color: #C8B273;
+}
+
+#services-main .service-category .service-item {
+    border-bottom: 1px dashed #D9D9D9;
+    padding: 15px 0;
+}
+
+#services-main .service-category .service-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+#services-main .service-category .service-item h3 {
+    color: #C8B273;
+    margin: 0 0 5px 0;
+    font-size: 1.2em;
+}
+
+#services-main .service-category .service-item .description {
+    color: #666;
+    margin: 0 0 10px 0;
+    font-size: 0.9em;
+}
+
+#services-main .service-category .service-item .details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#services-main .service-category .service-item .details .price {
+    font-weight: bold;
+    color: #80565D;
+    font-size: 1.1em;
+}
+
+#services-main .service-category .service-item .details .duration {
+    color: #999;
+    font-size: 0.9em;
+}
+
+#services-main .service-category .service-item .details .duration .fa-solid {
+    margin-right: 5px;
+}
+
+#services-main .service-category .service-item .schedule-btn {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #C8B273;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+#services-main .service-category .service-item .schedule-btn:hover {
+    background-color: #B09F67;
+}
+
+
+/* === ESTILOS DA PÁGINA DE CONTATO (contato.html) === */
+#contact-main {
+    width: 90%;
+    max-width: 600px;
+    margin-top: 30px;
+    padding: 10px;
+}
+
+#contact-main .contact-section {
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+#contact-main .contact-section h2 {
+    color: #C8B273;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-top: 0;
+    font-size: 1.4em;
+}
+
+#contact-main .contact-section h2 .fa-solid {
+    margin-right: 10px;
+    color: #80565D;
+}
+
+#contact-main .contact-section #working-hours .hours-list p {
+    margin: 8px 0;
+}
+
+#contact-main .contact-section #working-hours .hours-list p span {
+    font-weight: bold;
+    color: #80565D;
+}
+
+#contact-main .contact-section #working-hours .hours-list .note {
+    font-style: italic;
+    color: #C8B273;
+}
+
+#contact-main .contact-section #location address {
+    line-height: 1.6;
+    color: #555;
+    font-style: normal;
+    margin-bottom: 15px;
+}
+
+#contact-main .contact-section #location .map-link {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #C8B273;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    transition: background-color 0.3s;
+}
+
+#contact-main .contact-section #location .map-link:hover {
+    background-color: #B09F67;
+}
+
+#contact-main .contact-section #location .map-placeholder {
+    width: 100%;
+    height: 200px;
+    background-color: #F7ECE0;
+    border: 1px dashed #C8B273;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #888;
+    font-size: 0.9em;
+}
+
+#contact-main .contact-section #social-media .social-list {
+    list-style: none;
+    padding: 0;
+}
+
+#contact-main .contact-section #social-media .social-list li {
+    margin-bottom: 10px;
+}
+
+#contact-main .contact-section #social-media .social-btn {
+    display: block;
+    padding: 12px 15px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: opacity 0.3s;
+}
+
+#contact-main .contact-section #social-media .social-btn .fa-brands,
+#contact-main .contact-section #social-media .social-btn .fa-solid {
+    margin-right: 10px;
+    font-size: 1.1em;
+}
+
+#contact-main .contact-section #social-media .social-btn:hover {
+    opacity: 0.85;
+}
+
+#contact-main .contact-section #social-media .social-btn.whatsapp {
+    background-color: #25D366;
+}
+
+#contact-main .contact-section #social-media .social-btn.instagram {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+
+#contact-main .contact-section #social-media .social-btn.email {
+    background-color: #80565D;
+}
+
+#contact-main .contact-section #info-links .info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+#contact-main .contact-section #info-links .info-card {
+    display: block;
+    text-align: center;
+    background-color: #F7ECE0;
+    border-radius: 8px;
+    padding: 10px;
+    transition: transform 0.3s;
+}
+
+#contact-main .contact-section #info-links .info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+#contact-main .contact-section #info-links .info-card img {
+    width: 100%;
+    max-width: 100px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Estilo para a nova seção de Regras e Políticas */
+#policy-rules {
+    padding: 15px;
+    border: 1px solid #D9D9D9; /* $light-grey */
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+.rules-list {
+    list-style: none;
+    padding: 0;
+}
+
+.rules-list li {
+    background: #F7ECE0; /* $background-color */
+    padding: 10px;
+    margin-bottom: 10px;
+    border-left: 5px solid #C8B273; /* $primary-color */
+    border-radius: 4px;
+    line-height: 1.4;
+    font-size: 0.95em;
+}
+
+.rules-list li strong {
+    color: #80565D; /* $secondary-color */
+}
+
+/* Estilo da seção Conecte-se (Social Icons) */
+.social-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.social-list li {
+    flex: 1 1 45%; /* Garante que os itens ocupem cerca de metade do espaço */
+    text-align: center;
+}
+
+.social-icon-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none; /* REMOVE O SUBINHLADO PADRÃO DO LINK */
+    color: #000000; /* Cor do texto e ícone definida como preto */
+    padding: 10px;
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+    font-weight: 500;
+    font-size: 0.9em;
+}
+
+.social-icon-btn:hover {
+    background-color: #F7ECE0; /* Leve destaque ao passar o mouse */
+    color: #80565D; /* $secondary-color */
+}
+
+.social-icon-btn i {
+    font-size: 1.8em;
+    margin-bottom: 5px;
+    color: inherit; /* Garante que a cor do ícone siga a cor do link (preto ou hover color) */
+}
+
+/* Estilo da seção Localização (Mapa) */
+.address {
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 15px;
+    color: #80565D;
+}
+
+.map-container {
+    width: 100%;
+    height: 350px; /* Altura fixa para o mapa */
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+
+/* === ESTILOS DA PÁGINA DE DEPOIMENTOS (depoimentos.html) === */
+#testimonials-main {
+    width: 90%;
+    max-width: 700px;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+#testimonials-main #testimonial-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding-bottom: 30px;
+}
+
+#testimonials-main #testimonial-list .testimonial-card {
+    background-color: #FFFFFF;
+    border: 1px solid #C8B273;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s;
+}
+
+#testimonials-main #testimonial-list .testimonial-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+#testimonials-main #testimonial-list .testimonial-card.featured-review {
+    border-left: 5px solid #80565D;
+    background-color: #F8F1E4; /* Cor clara de #F7ECE0 */
+}
+
+#testimonials-main #testimonial-list .testimonial-card .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dashed #C8B273;
+}
+
+#testimonials-main #testimonial-list .testimonial-card .card-header .client-name {
+    font-weight: 700;
+    color: #80565D;
+    font-size: 1.1em;
+}
+
+#testimonials-main #testimonial-list .testimonial-card .card-header .rating .fa-star,
+#testimonials-main #testimonial-list .testimonial-card .card-header .rating .fa-star-half-stroke {
+    color: gold;
+}
+
+#testimonials-main #testimonial-list .testimonial-card .testimonial-quote {
+    font-style: italic;
+    color: #555;
+    margin: 15px 0;
+    line-height: 1.6;
+}
+
+#testimonials-main #testimonial-list .testimonial-card .service-type {
+    display: block;
+    text-align: right;
+    font-size: 0.8em;
+    color: #999;
+}
+
+#testimonials-main .menu-btn {
+    display: block;
+    width: 80%;
+    max-width: 300px;
+    margin: 0 auto 20px;
+    padding: 12px 20px;
+    background-color: #80565D;
+    color: #FFFFFF;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#testimonials-main .menu-btn:hover {
+    background-color: #6A4A50; /* Cor escura de #80565D */
+}
+
+
+/* === ESTILOS DA PÁGINA DE DICAS (dicas.html) === */
+#tips-main {
+    width: 90%;
+    max-width: 600px;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+#tips-main #tips-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 20px;
+}
+
+#tips-main #tips-list .tip-post {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    transition: box-shadow 0.3s;
+}
+
+#tips-main #tips-list .tip-post:hover {
+    box-shadow: 0 4px 12px rgba(128, 86, 93, 0.15); /* Cor de sombra levemente escura da Secondary */
+}
+
+#tips-main #tips-list .tip-post .post-thumb {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+    border: 2px solid #C8B273;
+}
+
+#tips-main #tips-list .tip-post .post-content {
+    flex-grow: 1;
+}
+
+#tips-main #tips-list .tip-post .post-content h3 {
+    color: #80565D;
+    margin: 0 0 5px 0;
+    font-size: 1.1em;
+}
+
+#tips-main #tips-list .tip-post .post-content .summary {
+    color: #666;
+    font-size: 0.9em;
+    line-height: 1.4;
+    margin: 0 0 8px 0;
+}
+
+#tips-main #tips-list .tip-post .post-content .summary .read-more {
+    color: #C8B273;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 5px;
+}
+
+#tips-main #tips-list .tip-post .post-content .post-meta {
+    display: block;
+    font-size: 0.75em;
+    color: #999;
+}
+
+#tips-main #tips-list .tip-post .post-content .post-meta .fa-solid {
+    margin-right: 5px;
+}
+
+
+/* === ESTILOS DA PÁGINA DE PRODUTOS (produtos.html) === */
+#products-main {
+    width: 90%;
+    max-width: 800px;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+#products-main #product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding-bottom: 20px;
+}
+
+#products-main #product-grid .product-card {
+    background-color: #FFFFFF;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+#products-main #product-grid .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(128, 86, 93, 0.15); /* Cor de sombra levemente escura da Secondary */
+}
+
+#products-main #product-grid .product-card .product-img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    border: 3px solid #C8B273;
+    border-radius: 50%;
+}
+
+#products-main #product-grid .product-card h3 {
+    color: #80565D;
+    font-family: "Ruda", sans-serif;
+    margin: 0 0 5px 0;
+    font-size: 1.3em;
+}
+
+#products-main #product-grid .product-card .product-description {
+    color: #666;
+    font-size: 0.9em;
+    height: 40px;
+    overflow: hidden;
+    margin: 0 0 15px 0;
+}
+
+#products-main #product-grid .product-card .product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+#products-main #product-grid .product-card .product-footer .price {
+    font-weight: 700;
+    color: #C8B273;
+    font-size: 1.4em;
+}
+
+#products-main #product-grid .product-card .product-footer .buy-btn {
+    padding: 8px 12px;
+    background-color: #25D366;
+    color: #FFFFFF;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+#products-main #product-grid .product-card .product-footer .buy-btn:hover {
+    background-color: #21B759; /* Cor escura de #25D366 */
+}
+
+
+/* === RODAPÉ (GLOBAL) === */
+footer {
+    text-align: center;
+    width: 100%;
+    padding: 10px 0;
+    margin-top: auto;
+}
+
+footer small {
+    color: #777;
+}
+
+footer small a {
+    color: #C8B273;
+    text-decoration: none;
+}
+
+footer small a:hover {
+    text-decoration: underline;
+}
+
+/* === DELAY DA ANIMAÇÃO EM CASCATA === */
+/* Faz com que cada card apareça em sequência, um após o outro */
+#menu-cards .nav-card:nth-child(1) { animation-delay: 0.1s; }
+#menu-cards .nav-card:nth-child(2) { animation-delay: 0.2s; }
+#menu-cards .nav-card:nth-child(3) { animation-delay: 0.3s; }
+#menu-cards .nav-card:nth-child(4) { animation-delay: 0.4s; }
+#menu-cards .nav-card:nth-child(5) { animation-delay: 0.5s; }
+#menu-cards .nav-card:nth-child(6) { animation-delay: 0.6s; }
+#menu-cards .nav-card:nth-child(7) { animation-delay: 0.7s; }
+#menu-cards .nav-card:nth-child(8) { animation-delay: 0.8s; }
