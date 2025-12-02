@@ -1,0 +1,7 @@
+Flask
+mysql-connector-python
+Flask-CORS
+Flask-Bcrypt
+PyJWT
+pytest
+python-dotenv # Para testes locaiscd
