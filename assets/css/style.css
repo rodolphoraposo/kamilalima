@@ -78,7 +78,6 @@
 .main-content {
     opacity: 0; /* O conteúdo principal começa invisível */
     transition: opacity 0.5s ease-in 0.5s; /* Transição de 0.5s com 0.5s de atraso */
-    /* Você pode precisar mudar a regra existente #container-main para .main-content */
 }
 
 .main-content.loaded {
@@ -100,6 +99,7 @@ body {
     padding-top: 30px;
 }
 
+/* Estilo que garante a responsividade base para o conteúdo principal (Index, Login) */
 .main-content {
     width: 90%;
     max-width: 500px;
@@ -214,7 +214,7 @@ body {
 /* === ESTILOS DA PÁGINA DE AGENDAMENTO (agendamento.html) === */
 #booking-main {
     width: 90%;
-    max-width: 450px;
+    max-width: 450px; /* Um pouco mais estreito que o principal */
     background: #FFFFFF;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
@@ -230,14 +230,17 @@ body {
     display: block;
 }
 
-#booking-main #booking-form .booking-step fieldset {
+/* Estilos de Fieldset e Legend */
+.form-container fieldset,
+#booking-main #booking-form .booking-step fieldset { /* Seletor generalizado */
     border: 1px solid #D9D9D9;
     border-radius: 8px;
     padding: 15px;
     margin-bottom: 20px;
 }
 
-#booking-main #booking-form .booking-step legend {
+.form-container legend,
+#booking-main #booking-form .booking-step legend { /* Seletor generalizado */
     font-weight: bold;
     color: #C8B273;
     font-size: 1.2em;
@@ -245,10 +248,12 @@ body {
     padding: 0 10px;
 }
 
+.form-container legend .fa-solid,
 #booking-main #booking-form .booking-step legend .fa-solid {
     margin-right: 8px;
 }
 
+/* Estilos de Label e Input do Agendamento */
 #booking-main #booking-form .booking-step label {
     display: block;
     margin-top: 15px;
@@ -276,6 +281,7 @@ body {
     outline: none;
 }
 
+/* Navegação e Botões do Agendamento */
 #booking-main #booking-form .booking-step .step-navigation {
     display: flex;
     justify-content: space-between;
@@ -330,114 +336,209 @@ body {
     cursor: not-allowed;
 }
 
-#booking-main #booking-form .summary-details {
-    background-color: #F8F3EC; /* Cor clara de #F7ECE0 */
-    border-left: 5px solid #C8B273;
-    padding: 15px;
-    margin-bottom: 20px;
-}
-
-#booking-main #booking-form .summary-details h2 {
-    margin-top: 0;
-    color: #80565D;
-    font-size: 1.1em;
-}
-
-#booking-main #booking-form .summary-details p {
-    margin: 5px 0;
-}
-
-#booking-main #booking-form .summary-details strong {
-    color: #C8B273;
-    font-weight: bold;
-}
-
-#booking-main #booking-form #time-slots {
-    margin-top: 20px;
-}
-
-#booking-main #booking-form #time-slots h3 {
-    font-size: 1em;
-    color: #555;
-    margin-bottom: 10px;
-}
-
-#booking-main #booking-form #time-slots .time-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-    gap: 10px;
-}
-
-#booking-main #booking-form #time-slots .time-slot-btn {
-    background-color: #eee;
-    color: #80565D;
-    border: 1px solid #ccc;
-    padding: 10px 5px;
-}
-
-#booking-main #booking-form #time-slots .time-slot-btn.selected {
-    background-color: #C8B273;
-    color: #FFFFFF;
-    border-color: #B09F67;
-    font-weight: bold;
-}
-
-#booking-main #booking-form #time-slots .time-slot-btn:hover:not(.selected) {
-    background-color: #ddd;
-}
-
-#booking-main #booking-form #time-slots .no-slots-message {
-    color: #DC3545;
+/* Estilos de Confirmação */
+.success-view {
     text-align: center;
-    font-weight: bold;
-    padding: 10px;
+    padding: 30px 0;
 }
 
-#booking-main #booking-form .success-view {
-    text-align: center;
-}
-
-#booking-main #booking-form .success-view h2 {
-    color: #28A745;
+.success-view h2 {
+    color: #80565D;
     font-size: 1.8em;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
-#booking-main #booking-form .success-view p {
-    margin-bottom: 20px;
-    color: #555;
+.success-view .fa-check-circle {
+    color: #28A745;
+    margin-right: 10px;
 }
 
-#booking-main #booking-form .success-view .new-booking-btn {
+.success-view p {
+    color: #444;
+    line-height: 1.6;
+}
+
+.success-view .new-booking-btn,
+.success-view .btn-primary {
     display: inline-block;
-    padding: 12px 25px;
     background-color: #C8B273;
     color: #FFFFFF;
+    padding: 10px 25px;
+    border-radius: 5px;
     text-decoration: none;
-    border-radius: 50px;
-    font-weight: bold;
+    margin-top: 20px;
+    font-weight: 500;
     transition: background-color 0.3s;
 }
 
-#booking-main #booking-form .success-view .new-booking-btn:hover {
+.success-view .new-booking-btn:hover,
+.success-view .btn-primary:hover {
     background-color: #B09F67;
 }
 
+/* Estilos de Horários Disponíveis */
+#time-slots {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px dashed #D9D9D9;
+    border-radius: 8px;
+    text-align: center;
+}
 
-/* === ESTILOS DA PÁGINA DE SERVIÇOS (servicos.html) === */
+#time-slots h3 {
+    color: #80565D;
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 5px;
+}
+
+.time-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 10px;
+}
+
+.time-slot-btn {
+    background-color: #F7ECE0;
+    color: #80565D;
+    border: 1px solid #D9D9D9;
+    padding: 10px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+    font-weight: 500;
+}
+
+.time-slot-btn:hover {
+    background-color: #e6e6e6;
+}
+
+.time-slot-btn.selected {
+    background-color: #C8B273;
+    color: #FFFFFF;
+    border-color: #C8B273;
+    font-weight: 700;
+}
+
+.no-slots-message {
+    color: #CC0000;
+    font-weight: 500;
+    padding: 10px;
+}
+
+/* === ESTILOS DO PAINEL ADMIN (admin/login.html) === */
+
+/* Estilos de Título do Formulário */
+.form-container h2 {
+    text-align: center;
+    color: #80565D; /* Cor Secundária */
+    margin-bottom: 25px;
+    font-size: 1.6em;
+}
+
+.form-container .fa-lock {
+    color: #C8B273; /* Cor Primária/Destaque */
+    margin-right: 10px;
+}
+
+/* Generalização de estilos de Input e Label para Admin e Agendamento (Passo 3) */
+/* Isso garante que os campos de Nome e WhatsApp no Agendamento e os campos de Login funcionem */
+.form-container label,
+.form-container .booking-step label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #80565D;
+    font-size: 0.95em;
+}
+
+.form-container input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+    transition: border-color 0.3s;
+    margin-bottom: 20px;
+}
+
+.form-container input:focus {
+    border-color: #C8B273;
+    outline: none;
+}
+
+/* Estilo para a mensagem de erro/sucesso do login */
+.alert {
+    padding: 12px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.alert.error {
+    background-color: #f8d7da; /* Vermelho claro */
+    color: #721c24; /* Vermelho escuro */
+    border: 1px solid #f5c6cb;
+}
+
+.alert.success {
+    background-color: #d4edda; /* Verde claro */
+    color: #155724; /* Verde escuro */
+    border: 1px solid #c3e6cb;
+}
+
+/* Estilo do botão de login (usando a classe btn-primary) */
+.form-container .step-navigation.single-button-layout {
+    display: block; 
+    margin-top: 30px;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1em;
+    font-weight: 700;
+    background-color: #C8B273; 
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, opacity 0.3s;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background-color: #B09F67; 
+}
+
+.btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Garante que o campo de login seja exibido, já que o HTML usa .booking-step.active */
+.booking-step.active {
+    display: block !important; 
+}
+
+
+/* === OUTROS ESTILOS (Serviços, Contato, etc.) === */
+
+/* Estilos da página de Serviços */
 #services-main {
     width: 90%;
     max-width: 600px;
-    margin-top: 20px;
 }
 
 #services-main .service-category {
-    margin-bottom: 30px;
-    background-color: #FFFFFF;
+    background-color: #FFFFFF; 
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
+    margin-bottom: 25px;
+} 
 
 #services-main .service-category h2 {
     color: #80565D;
@@ -487,114 +588,66 @@ body {
 }
 
 #services-main .service-category .service-item .details .price {
-    font-weight: bold;
+    font-weight: 700;
     color: #80565D;
     font-size: 1.1em;
 }
 
 #services-main .service-category .service-item .details .duration {
-    color: #999;
+    color: #666;
     font-size: 0.9em;
 }
 
-#services-main .service-category .service-item .details .duration .fa-solid {
+#services-main .service-category .service-item .details .fa-clock {
     margin-right: 5px;
 }
 
-#services-main .service-category .service-item .schedule-btn {
-    display: inline-block;
-    padding: 8px 15px;
+.schedule-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
     background-color: #C8B273;
-    color: white;
+    color: #FFFFFF;
     text-decoration: none;
     border-radius: 5px;
-    font-size: 0.9em;
-    font-weight: bold;
+    margin-top: 10px;
+    font-weight: 500;
     transition: background-color 0.3s;
 }
 
-#services-main .service-category .service-item .schedule-btn:hover {
+.schedule-btn:hover {
     background-color: #B09F67;
 }
 
-
-/* === ESTILOS DA PÁGINA DE CONTATO (contato.html) === */
+/* Estilos da página de Contato */
 #contact-main {
     width: 90%;
     max-width: 600px;
-    margin-top: 30px;
-    padding: 10px;
 }
 
 #contact-main .contact-section {
-    background-color: #FFFFFF;
+    background-color: #FFFFFF; 
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     margin-bottom: 25px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 #contact-main .contact-section h2 {
-    color: #C8B273;
-    border-bottom: 1px solid #ddd;
+    color: #80565D;
+    border-bottom: 2px solid #C8B273;
     padding-bottom: 10px;
     margin-top: 0;
-    font-size: 1.4em;
+    font-size: 1.5em;
 }
 
 #contact-main .contact-section h2 .fa-solid {
     margin-right: 10px;
-    color: #80565D;
-}
-
-#contact-main .contact-section #working-hours .hours-list p {
-    margin: 8px 0;
-}
-
-#contact-main .contact-section #working-hours .hours-list p span {
-    font-weight: bold;
-    color: #80565D;
-}
-
-#contact-main .contact-section #working-hours .hours-list .note {
-    font-style: italic;
     color: #C8B273;
 }
 
-#contact-main .contact-section #location address {
-    line-height: 1.6;
-    color: #555;
-    font-style: normal;
-    margin-bottom: 15px;
-}
-
-#contact-main .contact-section #location .map-link {
-    display: inline-block;
-    padding: 10px 15px;
-    background-color: #C8B273;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    transition: background-color 0.3s;
-}
-
-#contact-main .contact-section #location .map-link:hover {
-    background-color: #B09F67;
-}
-
-#contact-main .contact-section #location .map-placeholder {
-    width: 100%;
-    height: 200px;
-    background-color: #F7ECE0;
-    border: 1px dashed #C8B273;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #888;
-    font-size: 0.9em;
-}
-
+/* Botões de Redes Sociais */
 #contact-main .contact-section #social-media .social-list {
     list-style: none;
     padding: 0;
@@ -615,7 +668,7 @@ body {
     transition: opacity 0.3s;
 }
 
-#contact-main .contact-section #social-media .social-btn .fa-brands,
+#contact-main .contact-section #social-media .social-btn .fa-brands, 
 #contact-main .contact-section #social-media .social-btn .fa-solid {
     margin-right: 10px;
     font-size: 1.1em;
@@ -635,101 +688,6 @@ body {
 
 #contact-main .contact-section #social-media .social-btn.email {
     background-color: #80565D;
-}
-
-#contact-main .contact-section #info-links .info-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-}
-
-#contact-main .contact-section #info-links .info-card {
-    display: block;
-    text-align: center;
-    background-color: #F7ECE0;
-    border-radius: 8px;
-    padding: 10px;
-    transition: transform 0.3s;
-}
-
-#contact-main .contact-section #info-links .info-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-}
-
-#contact-main .contact-section #info-links .info-card img {
-    width: 100%;
-    max-width: 100px;
-    height: auto;
-    object-fit: contain;
-}
-
-/* Estilo para a nova seção de Regras e Políticas */
-#policy-rules {
-    padding: 15px;
-    border: 1px solid #D9D9D9; /* $light-grey */
-    border-radius: 8px;
-    margin-bottom: 25px;
-}
-
-.rules-list {
-    list-style: none;
-    padding: 0;
-}
-
-.rules-list li {
-    background: #F7ECE0; /* $background-color */
-    padding: 10px;
-    margin-bottom: 10px;
-    border-left: 5px solid #C8B273; /* $primary-color */
-    border-radius: 4px;
-    line-height: 1.4;
-    font-size: 0.95em;
-}
-
-.rules-list li strong {
-    color: #80565D; /* $secondary-color */
-}
-
-/* Estilo da seção Conecte-se (Social Icons) */
-.social-list {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 10px;
-}
-
-.social-list li {
-    flex: 1 1 45%; /* Garante que os itens ocupem cerca de metade do espaço */
-    text-align: center;
-}
-
-.social-icon-btn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none; /* REMOVE O SUBINHLADO PADRÃO DO LINK */
-    color: #000000; /* Cor do texto e ícone definida como preto */
-    padding: 10px;
-    background: #FFFFFF;
-    border: 1px solid #D9D9D9;
-    border-radius: 8px;
-    transition: background-color 0.2s;
-    font-weight: 500;
-    font-size: 0.9em;
-}
-
-.social-icon-btn:hover {
-    background-color: #F7ECE0; /* Leve destaque ao passar o mouse */
-    color: #80565D; /* $secondary-color */
-}
-
-.social-icon-btn i {
-    font-size: 1.8em;
-    margin-bottom: 5px;
-    color: inherit; /* Garante que a cor do ícone siga a cor do link (preto ou hover color) */
 }
 
 /* Estilo da seção Localização (Mapa) */
@@ -754,8 +712,7 @@ body {
     border: 0;
 }
 
-
-/* === ESTILOS DA PÁGINA DE DEPOIMENTOS (depoimentos.html) === */
+/* Estilos da página de Depoimentos */
 #testimonials-main {
     width: 90%;
     max-width: 700px;
@@ -781,12 +738,7 @@ body {
 
 #testimonials-main #testimonial-list .testimonial-card.featured-review:hover {
     border-left: 5px solid #80565D;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-}
-
-#testimonials-main #testimonial-list .testimonial-card {
-    background-color: #F8F1E4; /* Cor clara de #F7ECE0 */
+    padding-left: 8px;
 }
 
 #testimonials-main #testimonial-list .testimonial-card .card-header {
@@ -794,82 +746,67 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
-    padding-bottom: 5px;
-    border-bottom: 1px dashed #C8B273;
+    border-bottom: 1px dashed #D9D9D9;
+    padding-bottom: 10px;
 }
 
-#testimonials-main #testimonial-list .testimonial-card .card-header .client-name {
+#testimonials-main #testimonial-list .testimonial-card .client-name {
     font-weight: 700;
     color: #80565D;
     font-size: 1.1em;
 }
 
-#testimonials-main #testimonial-list .testimonial-card .card-header .rating .fa-star,
-#testimonials-main #testimonial-list .testimonial-card .card-header .rating .fa-star-half-stroke {
-    color: gold;
+#testimonials-main #testimonial-list .testimonial-card .rating .fa-star {
+    color: #C8B273;
+    font-size: 0.9em;
 }
 
 #testimonials-main #testimonial-list .testimonial-card .testimonial-quote {
     font-style: italic;
-    color: #555;
-    margin: 15px 0;
-    line-height: 1.6;
+    color: #333;
+    margin: 10px 0;
+    line-height: 1.5;
+    border-left: 3px solid #C8B273;
+    padding-left: 15px;
 }
 
 #testimonials-main #testimonial-list .testimonial-card .service-type {
     display: block;
     text-align: right;
-    font-size: 0.8em;
-    color: #999;
+    font-size: 0.85em;
+    color: #777;
+    margin-top: 10px;
 }
 
-#testimonials-main .menu-btn {
-    display: block;
-    width: 80%;
-    max-width: 300px;
-    margin: 0 auto 20px;
-    padding: 12px 20px;
-    background-color: #80565D;
-    color: #FFFFFF;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-#testimonials-main .menu-btn:hover {
-    background-color: #6A4A50; /* Cor escura de #80565D */
-}
-
-
-/* === ESTILOS DA PÁGINA DE DICAS (dicas.html) === */
+/* Estilos da página de Dicas (Blog) */
 #tips-main {
     width: 90%;
-    max-width: 600px;
+    max-width: 700px;
     margin-top: 20px;
     padding: 10px;
 }
 
 #tips-main #tips-list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding-bottom: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding-bottom: 30px;
 }
 
 #tips-main #tips-list .tip-post {
     background-color: #FFFFFF;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    display: flex;
-    align-items: center;
+    border: 1px solid #D9D9D9;
+    border-radius: 10px;
     padding: 15px;
-    transition: box-shadow 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
 }
 
 #tips-main #tips-list .tip-post:hover {
-    border-left: 5px solid #80565D;
-    box-shadow: 0 4px 12px rgba(128, 86, 93, 0.15); /* Cor de sombra levemente escura da Secondary */
+    border-left: 5px solid #C8B273;
+    padding-left: 10px;
 }
 
 #tips-main #tips-list .tip-post .post-thumb {
@@ -895,57 +832,50 @@ body {
     color: #666;
     font-size: 0.9em;
     line-height: 1.4;
-    margin: 0 0 8px 0;
+    margin: 0 0 10px 0;
 }
 
 #tips-main #tips-list .tip-post .post-content .summary .read-more {
     color: #C8B273;
-    font-weight: bold;
-    cursor: pointer;
-    display: inline-block;
-    margin-left: 5px;
+    font-weight: 500;
 }
 
 #tips-main #tips-list .tip-post .post-content .post-meta {
     display: block;
-    font-size: 0.75em;
+    font-size: 0.8em;
     color: #999;
 }
 
-#tips-main #tips-list .tip-post .post-content .post-meta .fa-solid {
+#tips-main #tips-list .tip-post .post-content .post-meta .fa-calendar {
     margin-right: 5px;
 }
 
-
-/* === ESTILOS DA PÁGINA DE PRODUTOS (produtos.html) === */
+/* Estilos da página de Produtos */
 #products-main {
     width: 90%;
     max-width: 800px;
-    margin-top: 20px;
-    padding: 10px;
 }
 
 #products-main #product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    padding-bottom: 20px;
+    gap: 25px;
+    padding: 20px 0 50px;
 }
 
 #products-main #product-grid .product-card {
     background-color: #FFFFFF;
-    border: 1px solid #eee;
+    border: 1px solid #D9D9D9;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
     padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     text-align: center;
     transition: transform 0.3s;
 }
 
 #products-main #product-grid .product-card.featured-review:hover {
-    border-left: 5px solid #80565D;
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(128, 86, 93, 0.15); /* Cor de sombra levemente escura da Secondary */
+    border: 1px solid #C8B273;
+    transform: translateY(-3px);
 }
 
 #products-main #product-grid .product-card .product-img {
@@ -996,27 +926,28 @@ body {
 }
 
 #products-main #product-grid .product-card .product-footer .buy-btn:hover {
-    background-color: #21B759; /* Cor escura de #25D366 */
+    background-color: #1FAF59;
 }
 
 
-/* === RODAPÉ (GLOBAL) === */
+/* === ESTILOS DO RODAPÉ (GLOBAL) === */
 footer {
-    text-align: center;
     width: 100%;
-    padding: 10px 0;
-    margin-top: auto;
-}
-
-footer small {
+    text-align: center;
+    padding: 15px 0;
+    background-color: #FFFFFF;
+    border-top: 1px solid #D9D9D9;
     color: #777;
+    font-size: 0.85em;
+    margin-top: auto; /* Empurra o rodapé para o final da página */
 }
 
-footer small a {
+footer a {
     color: #C8B273;
     text-decoration: none;
+    font-weight: 500;
 }
 
-footer small a:hover {
+footer a:hover {
     text-decoration: underline;
 }

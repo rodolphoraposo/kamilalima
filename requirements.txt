@@ -1,7 +1,6 @@
 Flask
 mysql-connector-python
 Flask-CORS
-Flask-Bcrypt
-PyJWT
-pytest
-python-dotenv # Para testes locaiscd
+python-dotenv  # NOVO: Para carregar o .env
+flask-bcrypt   # NOVO: Para criptografia de senhas
+PyJWT          # NOVO: Para tokens de autenticação
